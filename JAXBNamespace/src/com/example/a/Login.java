@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ *  Sample comment
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Login", propOrder = {
