@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilreq:Login xmlns:ilreq="www.example.com/a" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="www.example.com/a sample.xsd ">ilreq:Login</ilreq:Login>

@@ -1,0 +1,512 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://service.wellsfargo.com/provider/trust/bis/entity/assetSetup/2015/"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="AssetSetups">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="AssetSetup">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="RequestorName" type="xs:string"
+								nillable="false" minOccurs="1" />
+							<xs:element name="RequestorPhone" type="xs:string"
+								nillable="false" minOccurs="1" />
+							<xs:element name="Email" type="xs:string" nillable="false"
+								minOccurs="1" />
+							<xs:element name="BusinessLine">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="Trust Ops" />
+										<xs:enumeration value="WMG" />
+										<xs:enumeration value="CTS" />
+										<xs:enumeration value="ITS" />
+										<xs:enumeration value="WCM" />
+										<xs:enumeration value="Abbott Downing" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="DateRequested" type="xs:date"
+								nillable="false" minOccurs="1" />
+							<xs:element name="DateNeededBy" type="xs:date"
+								nillable="false" minOccurs="1" />
+							<xs:element name="LanID" type="xs:string" nillable="false"
+								minOccurs="1" />
+							<xs:element name="AU" type="xs:string" nillable="false"
+								minOccurs="1" />
+							<xs:element name="IndustryMarketableCusipTicker" type="xs:string"
+								nillable="true" minOccurs="0" />
+							<xs:element name="NonIndustryCusips" nillable="true"
+								minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="" />
+										<xs:enumeration value="Bond" />
+										<xs:enumeration value="CommercialPaperDiscount" />
+										<xs:enumeration value="Equity" />
+										<xs:enumeration value="GIC/GAC" />
+										<xs:enumeration value="Insurance/AnnuityPolicy" />
+										<xs:enumeration value="InvestmentAgreement" />
+										<xs:enumeration value="Liability" />
+										<xs:enumeration value="Miscellaneous" />
+										<xs:enumeration value="NonMarketableCertOfDeposit/SavingsAccount" />
+										<xs:enumeration value="Fund" />
+										<xs:enumeration value="NTCusips" />
+										<xs:enumeration value="RealEstate" />
+										<xs:enumeration value="Repo" />
+										<xs:enumeration value="SLUG" />
+										<xs:enumeration value="TimeDeposit" />
+										<xs:enumeration value="UnitizedCusip" />
+										<xs:enumeration value="SecurityInformation" />
+										<xs:enumeration value="CUSIPToModel" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Bond" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="BondType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="ABS/CMO" />
+													<xs:enumeration value="Corporate" />
+													<xs:enumeration value="Municipal" />
+													<xs:enumeration value="Private Placement" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="BondIssuerCountry" type="xs:string"
+											nillable="false" minOccurs="1" />
+										<xs:element name="BondUSIssuerType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Depository Institutions" />
+													<xs:enumeration value="Other Financial Institutions" />
+													<xs:enumeration value="Non-Financial Institution" />
+													<xs:enumeration value="State and Local Government" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="CommercialPaperDiscount" minOccurs="0"
+								maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="CommercialPaperDiscountType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Discount" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CommercialPaperDiscountIssuerCountry"
+											type="xs:string" nillable="false" minOccurs="0" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>
+													Commercial Paper Discount Issuer Country is only populated for Dummy
+													CP's
+												</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="CommercialPaperDiscountUSIssuerType"
+											nillable="false" minOccurs="0" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>
+													Commercial Paper Discount US Issuer Type is only populated for Dummy
+													CP's
+												</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Depository Institutions" />
+													<xs:enumeration value="Other Financial Institutions" />
+													<xs:enumeration value="Non-Financial Institution" />
+													<xs:enumeration value="State and Local Government" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Equity" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="EquityType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="ADR" />
+													<xs:enumeration value="Common Stock" />
+													<xs:enumeration value="Preferred" />
+													<xs:enumeration value="Rights" />
+													<xs:enumeration value="Warrants" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="EquityIssuerCountry" type="xs:string"
+											nillable="false" minOccurs="1" />
+										<xs:element name="EquityExpirationDate" type="xs:date"
+											nillable="false" minOccurs="1" />
+										<xs:element name="EquityUSIssuerType" nillable="false"
+											minOccurs="0" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>
+													Equity US Issuer Type is only populated for Rights and Warrants
+												</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Depository Institutions" />
+													<xs:enumeration value="Other Financial Institutions" />
+													<xs:enumeration value="Non-Financial Institution" />
+													<xs:enumeration value="General Government" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="GICGAC" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="GICGACType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="GIC" />
+													<xs:enumeration value="GAC" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DummyCUSIP" type="xs:string"
+											nillable="false" minOccurs="0" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="InsuranceAnnuityPolicy" minOccurs="0"
+								maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="InsuranceAnnuityPolicyType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Annuity" />
+													<xs:enumeration value="Insurance" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="InvestmentAgreement" minOccurs="0"
+								maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										Investment Agreement had no supplemental information needed in this
+										section
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Liability" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="LiabilityType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Loan/Mtg/Contract" />
+													<xs:enumeration value="Other" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Miscellaneous" minOccurs="0"
+								maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="MiscellaneousType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Miscellaneous" />
+													<xs:enumeration value="ReferenceInformational" />
+													<xs:enumeration value="RightToReceive" />
+													<xs:enumeration value="Safekeeping" />
+													<xs:enumeration value="SealedAsset" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="NonMarketableCertificateOfDepositSavingsAccount"
+								minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element
+											name="NonMarketableCertificateOfDepositSavingsAccountType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="CertificateOfDeposit" />
+													<xs:enumeration value="SavingsAccount" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element
+											name="NonMarketableCertificateOfDepositSavingsAccountIssuerCountry"
+											type="xs:string" nillable="false" minOccurs="1" />
+										<xs:element
+											name="NonMarketableCertificateOfDepositSavingsAccountUSIssuerType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="DepositoryInstitutions" />
+													<xs:enumeration value="OtherFinancialInstitutions" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Fund" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="FundType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="CommmingledNonBankCommonTrustFund" />
+													<xs:enumeration value="OpenEndMutualFund" />
+													<xs:enumeration value="ClosedEndMutualFund" />
+													<xs:enumeration value="PPFUNDWFBankCommonTrustFund" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="FundIssuerCountry" type="xs:string"
+											nillable="false" minOccurs="1" />
+										<xs:element name="FundCTFAccountNumber" type="xs:string"
+											nillable="false" minOccurs="1" />
+										<xs:element name="FundCommonTrustCollectiveSubIndustryCode">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="NonBankCTFCIF" />
+													<xs:enumeration value="BankBalancedFund" />
+													<xs:enumeration value="BankEquityFund" />
+													<xs:enumeration value="BankCorporateBond" />
+													<xs:enumeration value="BankIndexFund" />
+													<xs:enumeration value="BankPooledFund" />
+													<xs:enumeration value="BankUSGovernmentBondFund" />
+													<xs:enumeration value="BankTaxExemptBondFunds" />
+													<xs:enumeration value="BankTaxableBondFund" />
+													<xs:enumeration value="BankProprietaryHedgeFund" />
+													<xs:enumeration value="BankInternationalFund" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="NTCusips" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="NTCusipsType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="MortgageNote" />
+													<xs:enumeration value="PartLoan" />
+													<xs:enumeration value="PromNote" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="NTCusipsStateRegionID">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="None" />
+													<xs:enumeration value="Wisconsin" />
+													<xs:enumeration value="Iowa" />
+													<xs:enumeration value="Alaska, ITGWest, Wells West" />
+													<xs:enumeration value="Nebraska" />
+													<xs:enumeration value="Illinois" />
+													<xs:enumeration value="South Dakota" />
+													<xs:enumeration value="Colorado" />
+													<xs:enumeration value="Montana" />
+													<xs:enumeration value="New Mexico" />
+													<xs:enumeration value="North Dakota" />
+													<xs:enumeration value="WY - Cheyenne" />
+													<xs:enumeration value="Indiana" />
+													<xs:enumeration value="Texas" />
+													<xs:enumeration value="Idaho Utah" />
+													<xs:enumeration value="WY - Casper" />
+													<xs:enumeration value="Arizona" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RealEstate" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="RealEstateType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="AgCertificate" />
+													<xs:enumeration value="Managed" />
+													<xs:enumeration value="NonManaged" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Repo" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="RepoType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Repo" />
+													<xs:enumeration value="RepoOpen" />
+													<xs:enumeration value="RevRepo" />
+													<xs:enumeration value="RevRepoOpen" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RepoIssuerCountry" type="xs:string"
+											nillable="false" minOccurs="1" />
+										<xs:element name="RepoUSIssuerType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="DepositoryInstitutions" />
+													<xs:enumeration value="OtherFinancialInstitutions" />
+													<xs:enumeration value="NonFinancialInstitution" />
+													<xs:enumeration value="StateAndLocalGovernment" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="SLUG" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="RepoCaseNumber" type="xs:string"
+											nillable="false" minOccurs="1" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="TimeDeposit" minOccurs="0"
+								maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="TimeDepositType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="GlobalTimeDeposit" />
+													<xs:enumeration value="DomesticTimeDeposit" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TimeDepositIssuerCountry" type="xs:string"
+											nillable="false" minOccurs="1" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="UnitizedCUSIP" minOccurs="0"
+								maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="UnitizedCUSIPAssetMinor">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Pooled Funds" />
+													<xs:enumeration value="Tax Exempt Fund" />
+													<xs:enumeration value="Equity Fund" />
+													<xs:enumeration value="Taxable Fund" />
+													<xs:enumeration value="Balanced Fund" />
+													<xs:enumeration value="Common Stock" />
+													<xs:enumeration value="Other Assets" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="UnitizedCUSIPType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="99699 CUSIP" />
+													<xs:enumeration value="99799 CUSIP" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="UnitizedCUSIPIssuerCountry" type="xs:string"
+											nillable="false" minOccurs="1" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="CUSIPToModel" type="xs:string"
+								nillable="false" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										Applies for all Dummy Bond, Equity, or Mutual Funds, does NOT apply
+										for Unitized CUSIPs
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="SecurityInformation" minOccurs="0"
+								maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										Used for Non-Industry CUSIPS only
+									</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ShortName" type="xs:string"
+											nillable="false" />
+										<xs:element name="LongNameLine1" type="xs:string"
+											nillable="false" />
+										<xs:element name="LongNameLine2" type="xs:string"
+											nillable="true" />
+										<xs:element name="LongNameLine3" type="xs:string"
+											nillable="true" />
+										<xs:element name="LongNameLine4" type="xs:string"
+											nillable="true" />
+										<xs:element name="LongNameLine5" type="xs:string"
+											nillable="true" />
+										<xs:element name="IssueDate" type="xs:date"
+											nillable="false" />
+										<xs:element name="MaturityDate" type="xs:date"
+											nillable="false" />
+										<xs:element name="Rate" type="xs:decimal" nillable="false" />
+										<xs:element name="RateType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Fixed" />
+													<xs:enumeration value="Variable" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="FirstInterestDate" type="xs:date"
+											nillable="false" />
+										<xs:element name="PaymentFrequency">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Bi-Monthly" />
+													<xs:enumeration value="Maturity" />
+													<xs:enumeration value="Monthly" />
+													<xs:enumeration value="Quarterly" />
+													<xs:enumeration value="Semi-Annually" />
+													<xs:enumeration value="Weekly" />
+													<xs:enumeration value="Annually" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="SpecialInstructions" type="xs:string"
+											nillable="true" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<!-- temporarily commented out <xs:any minOccurs="0"/> -->
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
